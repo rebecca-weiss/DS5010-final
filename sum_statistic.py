@@ -87,14 +87,15 @@ class Sum_statistics:
         
         return string
         
-    def histogram(self, column_name):
+    def region_graph(self, column_name, region_name):
         values = list(self.data[column_name])
+        label = list(self.data[region_name])
         
-        n_bins = 5
-        x = sorted(values[5:])
-        
-        plt.hist(x, n_bins,
-        		histtype ='bar')
+        names = label[1:5]
+        pop_value = values[1:5]
+ 
+        plt.bar(names, pop_value, color ='maroon',
+                width = 0.4)
                 
         plt.title('Population Density & Summary Statistics\n\n',
         		fontweight ="bold")
@@ -121,4 +122,4 @@ if __name__ == "__main__":
     print(start.range_func('ESTIMATESBASE2020'))
     print(start.stand_dev('ESTIMATESBASE2020'))
     print(start.summary('ESTIMATESBASE2020'))
-    start.histogram('ESTIMATESBASE2020')
+    start.region_graph('ESTIMATESBASE2020', 'NAME')
