@@ -19,7 +19,7 @@ class Sum_statistics:
             sum_terms += value
             num_terms += 1
             
-        answer = "{:,.2f}".format(sum_terms/num_terms)
+        answer = sum_terms/num_terms
         return answer
     
     def median(self, column_name):
@@ -32,8 +32,27 @@ class Sum_statistics:
         else:
             median = values[len(values) // 2]
             
-        return "{:,.2f}".format(median)
+        return median
         
+    def minimum(self, column_name):
+        values = list(self.data[column_name])
+        values = sorted(values[5:])
+        min_value = min(values)
+        return min_value
+    
+    def maximum(self, column_name):
+        values = list(self.data[column_name])
+        values = sorted(values[5:])
+        max_value = max(values)
+        return max_value
+    
+    def range(self, column_name):
+        min_value = int(self.minimum(column_name))
+        max_value = int(self.maximum(column_name))
+        
+        range_ = max_value - min_value
+        
+        return range_
         
     
     
@@ -51,4 +70,8 @@ if __name__ == "__main__":
     #test = data['SUMLEV']
     
     start = Sum_statistics(r"C:\Users\Ruben\Documents\NEU\DS5010\Project\DS5010-final\data\NST-EST2021-popchg2020_2021.csv")
+    print(start.mean('ESTIMATESBASE2020'))
     print(start.median('ESTIMATESBASE2020'))
+    print(start.minimum('ESTIMATESBASE2020'))
+    print(start.maximum('ESTIMATESBASE2020'))
+    print(start.range('ESTIMATESBASE2020'))
