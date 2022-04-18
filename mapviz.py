@@ -36,14 +36,14 @@ fig.show()
 # custom US map using plotly graph objects
 fig = go.Figure(data=go.Choropleth(
     locations=data['Alpha_code'], # Spatial coordinates
-    z = data['NRANK_NPCHG2021'], # Data to be color-coded
+    z = data['POPESTIMATE2021'], # Data to be color-coded
     locationmode = 'USA-states', # set of locations match entries in `locations`
     colorscale = 'Reds',
-    colorbar_title = "National Ranking in Population Change",
+    colorbar_title = "2021 Population",
 ))
 
 fig.update_layout(
-    title_text = 'National ranking - numeric change in resident total population 7/1/2020 to 7/1/2021',
+    title_text = 'Population estimate as of 7/1/2021',
     geo_scope='usa', # limite map scope to USA
 )
 fig.show()
