@@ -26,3 +26,7 @@ fig.update_layout(
     geo_scope='usa',  # Plot only the USA instead of globe
 )
 fig.show()  # Output the plot to the screen
+
+# just look at certain states 
+fig = px.choropleth(locations=["CA", "TX", "NY"], locationmode="USA-states", color=[1,2,3], scope="usa")
+fig.show()
