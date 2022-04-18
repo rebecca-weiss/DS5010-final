@@ -3,6 +3,7 @@ ipython
 ## import libraries
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import scrape_FIPS
 
 # load df
@@ -29,4 +30,20 @@ fig.show()  # Output the plot to the screen
 
 # just look at certain states 
 fig = px.choropleth(locations=["CA", "TX", "NY"], locationmode="USA-states", color=[1,2,3], scope="usa")
+fig.show()
+
+
+# custom US map using plotly graph objects
+fig = go.Figure(data=go.Choropleth(
+    locations=data['Alpha_code'], # Spatial coordinates
+    z = data['NRANK_NPCHG2021'], # Data to be color-coded
+    locationmode = 'USA-states', # set of locations match entries in `locations`
+    colorscale = 'Reds',
+    colorbar_title = "National Ranking in Population Change",
+))
+
+fig.update_layout(
+    title_text = 'National ranking - numeric change in resident total population 7/1/2020 to 7/1/2021',
+    geo_scope='usa', # limite map scope to USA
+)
 fig.show()
