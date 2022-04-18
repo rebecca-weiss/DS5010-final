@@ -36,4 +36,5 @@ def scrape_FIPS(url = 'https://en.wikipedia.org/wiki/Federal_Information_Process
 
     # get rid of extra column
     fips.drop('Delete', inplace=True, axis=1)
+    fips.drop('STATE', inplace=True, axis=1)
     return fips
