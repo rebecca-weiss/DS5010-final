@@ -1,5 +1,7 @@
 import pandas as pds
-import csv
+import matplotlib
+import numpy as np
+import matplotlib.pyplot as plt
 
 class Sum_statistics:
     '''This is the class to summarize the data'''
@@ -46,17 +48,59 @@ class Sum_statistics:
         max_value = max(values)
         return max_value
     
-    def range(self, column_name):
+    def range_func(self, column_name):
         min_value = int(self.minimum(column_name))
         max_value = int(self.maximum(column_name))
         
         range_ = max_value - min_value
         
         return range_
+    
+    def stand_dev(self, column_name):
+        values = list(self.data[column_name])
+        values = sorted(values[5:])
+        mean = self.mean(column_name)
+        pop_size = len(values)
         
+        sum_for_values = 0
+        for value in values:
+            sum_for_values += (value - mean) ** 2
+            
+        standard_dev = (sum_for_values / pop_size) ** .5
+        
+        return standard_dev
     
-    
-    
+    def summary(self, column_name):
+        mean = self.mean(column_name)
+        median = self.median(column_name)
+        minimum = self.minimum(column_name)
+        maximum = self.maximum(column_name)
+        range_ = self.range_func(column_name)
+        standard_dev = self.stand_dev(column_name)
+        
+        string = "Mean: {:,.2f}".format(mean) + \
+            "\nMedian: {:,.2f}".format(median) + \
+                "\nMinimum: {:,.2f}".format(minimum) + \
+                    "\nMaximum: {:,.2f}".format(maximum) + \
+                        "\nRange: {:,.2f}".format(range_) + \
+                            "\nStandard Deviation: {:,.2f}".format(standard_dev)
+        
+        return string
+        
+    def histogram(self, column_name):
+        values = list(self.data[column_name])
+        
+        n_bins = 5
+        x = sorted(values[5:])
+        
+        plt.hist(x, n_bins,
+        		histtype ='bar')
+                
+        plt.title('Population Density & Summary Statistics\n\n',
+        		fontweight ="bold")
+        plt.figtext(1,0.5, start.summary('ESTIMATESBASE2020') )
+        
+        plt.show()
 
 
 
@@ -74,4 +118,7 @@ if __name__ == "__main__":
     print(start.median('ESTIMATESBASE2020'))
     print(start.minimum('ESTIMATESBASE2020'))
     print(start.maximum('ESTIMATESBASE2020'))
-    print(start.range('ESTIMATESBASE2020'))
+    print(start.range_func('ESTIMATESBASE2020'))
+    print(start.stand_dev('ESTIMATESBASE2020'))
+    print(start.summary('ESTIMATESBASE2020'))
+    start.histogram('ESTIMATESBASE2020')
