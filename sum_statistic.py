@@ -8,7 +8,7 @@ class Sum_statistics:
     
     def __init__(self, data_location):
         '''The data should be a dataframe'''
-        self.data = pds.read_csv(r"C:\Users\Ruben\Documents\NEU\DS5010\Project\DS5010-final\data\NST-EST2021-popchg2020_2021.csv")
+        self.data = pds.read_csv(("data/NST-EST2021-popchg2020_2021.csv"))
         
         
     def mean(self, column_name):
@@ -122,4 +122,4 @@ if __name__ == "__main__":
     print(start.range_func('ESTIMATESBASE2020'))
     print(start.stand_dev('ESTIMATESBASE2020'))
     print(start.summary('ESTIMATESBASE2020'))
-    start.region_graph('ESTIMATESBASE2020', 'NAME')
+    start.region_graph('POPESTIMATE2021', 'NAME')
