@@ -25,24 +25,31 @@ class Vis_Census:
 			x_axis = self.data[:5]
 			return x_axis
 
-	def scatter_plot(self, column_name):
+	def compare_bar_graph(self, column_name, column_name):
 
-		x = self.x_axis
-		y = self.data[column_name]
+		barWidth = 0.25
+		fig = plt.subplots(figsize =(12, 8))
+ 
+		input_1 = self.data["column_name"]
+		input_2 = self.data["column_name"]
 
-		sizes = np.random.uniform(15, 80, len(x))
-		colors = np.random.uniform(15, 80, len(x))
+		br1 = np.arange(len(input_1))
+		br2 = [x + barWidth for x in br1]
+ 
+		plt.bar(br1, input_1, width = barWidth, label ='column_name')
+		plt.bar(br2, input_2, width = barWidth, label ='column_name')
 
-		fig, ax = plt.subplots()
-
+		plt.xlabel("NAME" or "REGION")
+		plt.ylabel('Value')
+		plt.xticks([r + barWidth for r in range(len(input_1))],
+		["NAME" or "REGION"])
+		plt.legend()
 		plt.show()
 
-		pass
-
-	def bar_graph(self, column_name): # example if you want to isolate and run alone (does include everything)
-
-		x = self.data['NAME']
-		y = self.data["ESTIMATESBASE2020"]
+	def bar_graph(self, column_name): 
+		
+		x = self.data['column_name']
+		y = self.data["column_name"]
 
 		fig, ax = plt.subplots()
 
@@ -50,18 +57,19 @@ class Vis_Census:
 		plt.xticks(range(len(x)), x, rotation='vertical')
 
 
-		plt.xlabel('State')
-		plt.ylabel('Estimated Population 2020')
+		plt.xlabel('column_name') #from x
+		plt.ylabel('column_name') #from y
 
 		plt.show()
 
 	def pie_chart(self, column_name):
+
 		x = self.data[column_name]
-		colors = plt.get_cmap('Orange')(np.linspace(0.2, 0.7, len(x)))
-
+		lables = self.data['NAME'] or self.data['REGION']
+	
 		fig, ax = plt.subplots()
-		ax.pie(x, colors=colors, radius=6, center=(4, 4),
-		wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
-		plt.show()
+	
+		ax.pie(x, labels=lables,autopct='%.1f%%', radius=2, center=(5, 5),
+			wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=False)
 
-		pass
+		plt.show()
