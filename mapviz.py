@@ -70,16 +70,20 @@ fig.show()
 
 # custom US map using plotly graph objects
 def map_usa_heat(data, var, title=None): 
+    '''data frame with FIPS code (data)
+    var: variable to visualize
+    title: title of map 
+    returns: map of USA with heatmap visualized'''
     fig = go.Figure(data=go.Choropleth(
         locations=data['Alpha_code'], # Spatial coordinates
-        z = data['POPESTIMATE2021'], # Data to be color-coded
+        z = data[var], # Data to be color-coded
         locationmode = 'USA-states', # set of locations match entries in `locations`
         colorscale = 'Reds',
         colorbar_title = "2021 Population",
     ))
 
     fig.update_layout(
-        title_text = 'Population estimate as of 7/1/2021',
+        title_text = title,
         geo_scope='usa', # limit map scope to USA
     )
     fig.show()
