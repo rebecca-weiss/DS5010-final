@@ -24,16 +24,16 @@ class combined_statistics:
 		values = list(specifieddf[column_name])
 
 		if len(values) % 2 == 0:
-            first = values[len(values) // 2]
-            second = values[len(values) // 2 - 1]
-            median = (first + second)/2
-        else:
-            median = values[len(values) // 2]
-            
-        return median
+			first = values[len(values) // 2]
+			second = values[len(values) // 2-1]
+			median = (first + second) / 2
+		else:
+			median = values[len(values) // 2]
 
-    def combined_minimum(self, x, column_name):
-    	specifieddf = df[df.Name.isin(x)]
+		return median
+
+	def combined_minimum(self, x, column_name):
+		specifieddf = df[df.Name.isin(x)]
 		values = list(specifieddf[column_name])
 
 		min_value = min(values)
@@ -69,7 +69,6 @@ class combined_statistics:
 
 		return standard_dev
 
-
 	def combined_summary(self, x, column_name):
 		mean = self.combined_mean(x, column_name)
 		median = self.combined_median(x, column_name)
@@ -79,10 +78,10 @@ class combined_statistics:
 		standard_dev = self.combined_stand_dev(x, column_name)
 
 		string = "Mean: {:,.2f}".format(mean) + \
-           "\nMedian: {:,.2f}".format(median) + \
-               "\nMinimum: {:,.2f}".format(minimum) + \
-                   "\nMaximum: {:,.2f}".format(maximum) + \
-                       "\nRange: {:,.2f}".format(range_) + \
-                           "\nStandard Deviation: {:,.2f}".format(standard_dev)
-        
-        return string
+			"\nMedian: {:,.2f}".format(median) + \
+				"\nMinimum: {:,.2f}".format(minimum) + \
+					"\nMaximum: {:,.2f}".format(maximum) + \
+						"\nRange: {:,.2f}".format(range_) + \
+							"\nStandard Deviation: {:,.2f}".format(standard_dev)
+
+		return string
