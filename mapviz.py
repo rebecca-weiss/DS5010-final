@@ -46,20 +46,22 @@ def scrape_FIPS(url = 'https://en.wikipedia.org/wiki/Federal_Information_Process
  # update and join df
 # data = pd.merge(fips, df, on='NAME')
 
-def map_usa(data, var):
+def map_usa(data, var, title=None):
     '''data frame with FIPS code (data)
     var: variable to visualize
+    title: title of map 
     returns: map of USA with heatmap visualized'''
     fig = px.choropleth(data,  # Input Pandas DataFrame
                         locations="Alpha_code",  # DataFrame column with locations
-                        color="var",  # DataFrame column with color values
+                        color=var,  # DataFrame column with color values
                         hover_name="NAME", # DataFrame column hover info
                         locationmode = 'USA-states') # Set to plot as US States
     fig.update_layout(
-        title_text = 'National ranking - numeric change in resident total population 7/1/2020 to 7/1/2021 ', # Create a Title
+        title_text = title, # Create a Title
         geo_scope='usa',  # Plot only the USA instead of globe
     )
     fig.show()  # Output the plot to the screen
+
 
 # just look at certain states 
 fig = px.choropleth(locations=["CA", "TX", "NY"], locationmode="USA-states", color=[1,2,3], scope="usa")
@@ -67,16 +69,17 @@ fig.show()
 
 
 # custom US map using plotly graph objects
-fig = go.Figure(data=go.Choropleth(
-    locations=data['Alpha_code'], # Spatial coordinates
-    z = data['POPESTIMATE2021'], # Data to be color-coded
-    locationmode = 'USA-states', # set of locations match entries in `locations`
-    colorscale = 'Reds',
-    colorbar_title = "2021 Population",
-))
+def map_usa_heat(data, var, title=None): 
+    fig = go.Figure(data=go.Choropleth(
+        locations=data['Alpha_code'], # Spatial coordinates
+        z = data['POPESTIMATE2021'], # Data to be color-coded
+        locationmode = 'USA-states', # set of locations match entries in `locations`
+        colorscale = 'Reds',
+        colorbar_title = "2021 Population",
+    ))
 
-fig.update_layout(
-    title_text = 'Population estimate as of 7/1/2021',
-    geo_scope='usa', # limite map scope to USA
-)
-fig.show()
+    fig.update_layout(
+        title_text = 'Population estimate as of 7/1/2021',
+        geo_scope='usa', # limit map scope to USA
+    )
+    fig.show()
