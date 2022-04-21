@@ -1,4 +1,4 @@
-import pandas as pdsq
+import pandas as pds
 
 class Combined_statistics:
 
