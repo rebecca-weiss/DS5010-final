@@ -2,6 +2,9 @@ import pandas as pdsq
 
 class Combined_statistics:
 
+	def __init__(self, data_location):
+		self.data = pds.read_csv("data/NST-EST2021-alldata.csv")
+
 	df = pds.read_csv("data/NST-EST2021-alldata.csv")
 
 
