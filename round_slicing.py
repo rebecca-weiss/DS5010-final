@@ -16,7 +16,7 @@ import pandas as pd
 # In[7]:
 
 
-df = pd.read_csv("data/NST-EST2021-popchg2020_2021.csv")
+df = pd.read_csv("data/NST-EST2021-alldata.csv")
 
 
 # In[8]:
@@ -27,13 +27,14 @@ class basic_clean:
     
     def __init__(self, data):
         '''The data should be a dataframe'''
-        self.data = pd.read_csv(r"C:\Users\sanja\Desktop\DS_project\NST-EST2021-popchg2020_2021.csv")
+        self.data = pd.read_csv(data)
     
     
     def rounding(self,data_frame,column_name):
         data_frame[column_name]=  round(data_frame[column_name],4)
         #data_frame
         print("The column " +column_name+ ": has been rounded")
+        return data_frame[column_name]
   
     def slicing(self,data_frame):
         
@@ -57,11 +58,11 @@ class basic_clean:
 
 
 if __name__ == "__main__":
-    initial = basic_clean(r"C:\Users\sanja\Desktop\DS_project\NST-EST2021-popchg2020_2021.csv")
+    initial = basic_clean("data/NST-EST2021-alldata.csv")
     
     initial.slicing(df)
-    initial.rounding(df,'PPOPCHG_2020')
-    initial.rounding(df,'PPOPCHG_2021')
+    print(initial.rounding(df,'NPOPCHG_2020'))
+    initial.rounding(df,'NPOPCHG_2021')
 
 
 # In[ ]:

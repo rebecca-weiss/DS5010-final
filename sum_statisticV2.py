@@ -6,12 +6,12 @@ class Sum_statistics:
     
     def __init__(self, data_location):
         '''The data should be a dataframe'''
-        self.data = pds.read_csv((data_location))
+        self.data = data_location
         
         
     def mean(self, column_name):
         values = list(self.data[column_name])
-        values = values[5:]
+
         sum_terms = 0
         num_terms = 0 
         
@@ -24,7 +24,7 @@ class Sum_statistics:
     
     def median(self, column_name):
         values = list(self.data[column_name])
-        values = sorted(values[5:])
+        
         if len(values) % 2 == 0:
             first = values[len(values) // 2]
             second = values[len(values) // 2 - 1]
@@ -36,13 +36,11 @@ class Sum_statistics:
         
     def minimum(self, column_name):
         values = list(self.data[column_name])
-        values = sorted(values[5:])
         min_value = min(values)
         return min_value
     
     def maximum(self, column_name):
         values = list(self.data[column_name])
-        values = sorted(values[5:])
         max_value = max(values)
         return max_value
     
@@ -56,7 +54,6 @@ class Sum_statistics:
     
     def stand_dev(self, column_name):
         values = list(self.data[column_name])
-        values = sorted(values[5:])
         mean = self.mean(column_name)
         pop_size = len(values)
         
@@ -85,8 +82,11 @@ class Sum_statistics:
         
         return string
         
-    def region_graph(self, column_name, region_name):
-        values = list(self.data[column_name])
+    def region_graph(self, column_name, column_values):
+        
+        bargraph = self.data.plot(x = column_name, y = column_values)
+        return bargraph
+        '''values = list(self.data[column_name])
         label = list(self.data[region_name])
         
         names = label[1:5]
@@ -100,7 +100,7 @@ class Sum_statistics:
         plt.figtext(1,0.5, start.summary('ESTIMATESBASE2020') )
         
         plt.show()
-
+'''
 
 
 
@@ -121,3 +121,4 @@ if __name__ == "__main__":
     print(start.stand_dev('ESTIMATESBASE2020'))
     print(start.summary('ESTIMATESBASE2020'))
     start.region_graph('POPESTIMATE2021', 'NAME')
+
