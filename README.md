@@ -19,7 +19,7 @@ The class sum_statistics is used to find various statistical values of the entir
 
 The class combination_statistics has many similar function. However, this function takes in lists of specified combinations of state names and will output the statistical values for these unique combinations. 
 
-Additionally, we use various functions in order to visually display the data in the form of maps and charts. 
+Additionally, various functions are available to visually display the data in the form of maps and charts. 
 
 ## Examples of Use
 
