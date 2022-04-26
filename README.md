@@ -1,6 +1,8 @@
-# DS5010-final
+# US_Census_Analyzer
 
-Code for group project for Programming in Data Science Course
+## Purpose
+
+The purpose of US_Census_Analyzer is to statistically analyze and visually present data based on the US census.
 
 
 Authors:
