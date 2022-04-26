@@ -1,5 +1,8 @@
 # US_Census_Analyzer
 
+Authors:
+Rebecca Weiss, Jacob Dengler, Matthew Quaglia, Ruben Lema, Sanjay Kanakaraj
+
 ## Purpose
 
 The purpose of US_Census_Analyzer is to statistically analyze and visually present data based on the US census.
