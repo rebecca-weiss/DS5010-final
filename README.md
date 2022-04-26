@@ -7,7 +7,7 @@ Rebecca Weiss, Jacob Dengler, Matthew Quaglia, Ruben Lema, Sanjay Kanakaraj
 
 The purpose of US_Census_Analyzer is to statistically analyze and visually present data based on the US census.
 
-Data https://www.census.gov/data/datasets/time-series/demo/popest/2020s-national-total.html 
+Data: https://www.census.gov/data/datasets/time-series/demo/popest/2020s-national-total.html 
 
 ## Organization
 
