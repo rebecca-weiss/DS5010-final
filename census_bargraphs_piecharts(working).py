@@ -23,8 +23,8 @@ class Vis_Census:
 	This is the class to visualize the data with Bar Graphs and Pie Charts
 	This class can show the region and state specific data by comparing each respective area to each other
 	Make sure to establish the dataframe before using Vis_Census
+	Also, make sure to go through the class and change the ['NAME'] if the column naming convention for location is different in your csv file
 	Below is an example "__name__ == "__main__" to run the code
-	
 	'''
 
 	def __init__(self, data):
