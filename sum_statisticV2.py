@@ -2,11 +2,31 @@ class Sum_statistics:
     '''This is the class to summarize the data'''
     
     def __init__(self, data_location):
-        '''The data should be a dataframe'''
+        '''
+        This clas is to get specific or combined statistics
+        ----------
+        data_location : DataFrame
+            User inputs DataFrame, they wish to Analyse.
+
+        Returns
+        -------
+        Answer to specific formula requested.
+
+        '''
         self.data = data_location
         
         
     def mean(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         values = list(self.data[column_name])
 
         sum_terms = 0
@@ -20,6 +40,16 @@ class Sum_statistics:
         return answer
     
     def median(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         values = list(self.data[column_name])
         
         if len(values) % 2 == 0:
@@ -32,16 +62,46 @@ class Sum_statistics:
         return median
         
     def minimum(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         values = list(self.data[column_name])
         min_value = min(values)
         return min_value
     
     def maximum(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         values = list(self.data[column_name])
         max_value = max(values)
         return max_value
     
     def range_func(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         min_value = int(self.minimum(column_name))
         max_value = int(self.maximum(column_name))
         
@@ -50,6 +110,16 @@ class Sum_statistics:
         return range_
     
     def stand_dev(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         values = list(self.data[column_name])
         mean = self.mean(column_name)
         pop_size = len(values)
@@ -63,6 +133,16 @@ class Sum_statistics:
         return standard_dev
     
     def summary(self, column_name):
+        '''
+        column_name : String
+            User must provide Column which they would like to calculate.
+
+        Returns
+        -------
+        answer : integer
+            returns the formulas answer.
+
+        '''
         mean = self.mean(column_name)
         median = self.median(column_name)
         minimum = self.minimum(column_name)
@@ -78,28 +158,6 @@ class Sum_statistics:
                             "\nStandard Deviation: {:,.2f}".format(standard_dev)
         
         return string
-        
-    def region_graph(self, column_name, column_values):
-        
-        bargraph = self.data.plot(x = column_name, y = column_values)
-        return bargraph
-        '''values = list(self.data[column_name])
-        label = list(self.data[region_name])
-        
-        names = label[1:5]
-        pop_value = values[1:5]
- 
-        plt.bar(names, pop_value, color ='maroon',
-                width = 0.4)
-                
-        plt.title('Population Density & Summary Statistics\n\n',
-        		fontweight ="bold")
-        plt.figtext(1,0.5, start.summary('ESTIMATESBASE2020') )
-        
-        plt.show()
-'''
-
-
 
 
 if __name__ == "__main__":
