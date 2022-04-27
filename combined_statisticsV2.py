@@ -3,16 +3,16 @@ from round_slicingV2 import Basic_clean
 class Combined_statistics:
     def __init__(self, data_df):
         '''
-        Class takes dataframe to run methods 
+        Class takes dataframe to run methods - with the purpose of testing specific dataframes
         '''
         self.data = data_df
         
     def combined_mean(self, x, cty_state_name, column_name):
         '''
-        X - is a list, with user unput of States
+        X - is a list, with user input of States
         ----------
         x : List 
-            X is a list, with user unput of States
+            X is a list, with user input of States/cities
         cty_state_name : String
             This is where we input the column name for the States or Cities.
         column_name : String
@@ -43,6 +43,22 @@ class Combined_statistics:
         return answer
     
     def combined_median(self, x, cty_state_name, column_name):
+        '''
+        X - is a list, with user input of States/cities
+        ----------
+        x : List 
+            X is a list, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        Combined Median : Integer
+            Returns the median for the column selected.
+        '''
+        
         values = []
         for state in x:
             first = self.data.loc[self.data[cty_state_name] == state]
@@ -58,6 +74,22 @@ class Combined_statistics:
         return median
     
     def combined_minimum(self, x, cty_state_name, column_name):
+        '''
+        X - is a list, with user input of States/cities
+        ----------
+        x : List 
+            X is a list, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        Combined Minimum : Integer
+            Returns the Minimum for the column selected.
+        '''
+        
         values = []
         for state in x:
             first = self.data.loc[self.data[cty_state_name] == state]
@@ -67,6 +99,22 @@ class Combined_statistics:
         return min_value
     
     def combined_maximum(self, x, cty_state_name, column_name):
+        '''
+        X - is a list, with user input of States/cities
+        ----------
+        x : List 
+            X is a list, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        Combined Maximym : Integer
+            Returns the Maximum for the column selected.
+        '''
+        
         values = []
         for state in x:
             first = self.data.loc[self.data[cty_state_name] == state]
@@ -76,6 +124,22 @@ class Combined_statistics:
         return max_value
     
     def combined_range_func(self, x, cty_state_name, column_name):
+        '''
+        X - is a list, with user input of States/cities
+        ----------
+        x : List 
+            X is a list, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        Combined Range : Integer
+            Returns the Range for the column selected.
+        '''
+        
         min_value = int(self.combined_minimum(x, cty_state_name, column_name))
         max_value = int(self.combined_maximum(x, cty_state_name, column_name))
     
@@ -84,6 +148,22 @@ class Combined_statistics:
         return range_
     
     def combined_stand_dev(self, x, cty_state_name, column_name):
+        '''
+        X - is a list, with user input of States/cities
+        ----------
+        x : List 
+            X is a list, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        Combined Standard Deviation : Integer
+            Returns the Standard Deviation for the column selected.
+        '''
+        
         values = []
         for state in x:
             first = self.data.loc[self.data[cty_state_name] == state]
@@ -101,6 +181,22 @@ class Combined_statistics:
         return standard_dev
     
     def combined_summary(self, x, cty_state_name, column_name):
+        '''
+        X - is a list, with user input of States/cities
+        ----------
+        x: List 
+            X is a list, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        Combined Summary : Integer
+            Returns the Summary for the column selected.
+        '''
+        
         mean = self.combined_mean(x, cty_state_name, column_name)
         median = self.combined_median(x, cty_state_name, column_name)
         minimum = self.combined_minimum(x, cty_state_name, column_name)
@@ -120,6 +216,22 @@ class Combined_statistics:
         return string
     
     def comparison(self, x, y, cty_state_name, column_name):
+        '''
+        X & Y - is a string, with user input of States/cities
+        ----------
+        x & y : string 
+            X is a string, with user input of States/cities
+        cty_state_name : String
+            This is where we input the column name for the States or Cities.
+        column_name : String
+            Column for which the formulate will run to.
+
+        Returns
+        -------
+        State or City : String
+            Returns the name of the city with the highest value for the column selected.
+        '''
+        
         xdf = self.data.loc[self.data[cty_state_name] == x]
         x_value = xdf[column_name]
         ydf = self.data.loc[self.data[cty_state_name] == y]
