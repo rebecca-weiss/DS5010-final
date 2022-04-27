@@ -19,12 +19,22 @@ def data_converter_state(x):
 
 
 class Vis_Census:
-	'''This is the class to visualize the data with Bar Graphs and Pie Charts'''
+	'''
+	This is the class to visualize the data with Bar Graphs and Pie Charts
+	This class can show the region and state specific data by comparing each respective area to each other
+	Make sure to establish the dataframe before using Vis_Census
+	Below is an example "__name__ == "__main__" to run the code
+	
+	'''
 
 	def __init__(self, data):
 		self.data = data
 
 	def bar_graph(self, var1): 
+		
+		"""bar_graph will display a bar graph for a single variable input(column name)
+		The x-axis will automatically label based off of the 'NAME' column found in the dataframe
+		Returns a plot of the bar graph"""
 
 		input_1 = self.data[var1]
 		lables = self.data['NAME']
@@ -42,6 +52,9 @@ class Vis_Census:
 		plt.show()
 
 	def compare_bar_graph(self, var1, var2):
+		"""compare_bar_graph will display a bar graph for a two variables (two column name)
+		The x-axis will automatically label based off of the 'NAME' column found in the dataframe
+		Returns a plot of the bar graph with two bars for comparison sake"""
 
 		fig = plt.subplots(figsize =(20, 8))
  
@@ -64,6 +77,10 @@ class Vis_Census:
 		plt.show()
 
 	def pie_chart(self, var1):
+		"""pie_chart will display a pie chart for a single variable input(column name)
+		The legend will automatically label based off of the 'NAME' column found in the dataframe
+		Percentages will be added to end of each 'NAME' to show a direct comparison of location in total amount of input variable
+		Returns a plot of the bar graph"""
 
 		x = self.data[var1]
 		labels = self.data['NAME']
@@ -81,14 +98,16 @@ class Vis_Census:
 
 
 if __name__ == "__main__":
-	dataframe = data_converter_state(r"C:\Users\Ripper.000\Desktop\NST-EST2021-alldata.csv")
+	#dataframe = data_converter_state(r"C:\Users\Ripper.000\Desktop\NST-EST2021-alldata.csv")
+	dataframe = data_converter_state(r"/Users/jake/Downloads/NST-EST2021-popchg2020_2021.csv")
 
 	data = Vis_Census(dataframe)
 	print(data.compare_bar_graph('ESTIMATESBASE2020','POPESTIMATE2021'))
 	print(data.bar_graph('ESTIMATESBASE2020'))
 	print(data.pie_chart('ESTIMATESBASE2020'))
 
-	dataframe = data_converter_region(r"C:\Users\Ripper.000\Desktop\NST-EST2021-alldata.csv")
+	#dataframe = data_converter_region(r"C:\Users\Ripper.000\Desktop\NST-EST2021-alldata.csv")
+	dataframe = data_converter_region(r"/Users/jake/Downloads/NST-EST2021-popchg2020_2021.csv")
 
 	data = Vis_Census(dataframe)
 	print(data.compare_bar_graph('ESTIMATESBASE2020','POPESTIMATE2021'))
