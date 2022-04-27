@@ -1,6 +1,3 @@
-import pandas as pds
-import matplotlib.pyplot as plt
-
 class Sum_statistics:
     '''This is the class to summarize the data'''
     
@@ -73,7 +70,7 @@ class Sum_statistics:
         range_ = self.range_func(column_name)
         standard_dev = self.stand_dev(column_name)
         
-        string = "Mean: {:,.2f}".format(mean) + \
+        string = "\nMean: {:,.2f}".format(mean) + \
             "\nMedian: {:,.2f}".format(median) + \
                 "\nMinimum: {:,.2f}".format(minimum) + \
                     "\nMaximum: {:,.2f}".format(maximum) + \
