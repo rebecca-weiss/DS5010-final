@@ -1,7 +1,17 @@
 import pandas as pd 
 
 class Basic_clean:
+    '''
+    This Class is takes a CSV file and transforms it to a DataFrame for modules -
+    beyond are able to work through their analysis
+    '''
     def __init__(self, data, aggregated_data):
+        '''
+        data : DataFrame
+            The table of specific cities and states within regions and states
+        aggregated_data : DataFrame
+            Table of aggregated regions and states
+        '''
         # encoding = "ISO-8859-1" was added to solve for error 'utf-8' codec can't decode byte 0xf1 in position 107223: invalid continuation byte
         self.data = pd.read_csv(data, encoding = "ISO-8859-1")
         self.aggregated_data = pd.read_csv(aggregated_data)
@@ -15,9 +25,26 @@ class Basic_clean:
 'Vermont', 'Washington', 'Wisconsin', 'West Virginia', 'Wyoming']
         
     def aggregated_regions(self):
+        '''
+        Returns
+        -------
+        DataFrame
+            Returns DataFrame with 4 rows, with aggregated colums for each region.
+
+        '''
         return self.aggregated_data.iloc[1:5]
     
     def regions(self, which_region):
+        '''
+        which_region : String
+            User must input specific region to generate DataFrame.
+
+        Returns
+        -------
+        DataFrame with Rows of states for Specific Region.
+
+        '''
+        
         #which_region = input('Which Region? A: Northeast Region B: Midwest Region \
 #\nC: South Region D: West Region  E: All Regions \n')
         if which_region == 'Northeast':
@@ -36,15 +63,27 @@ class Basic_clean:
             return self.data 
 
     def aggregated_states(self):
-        ''' This method requires aggregated data file & returns all states
+        '''
+        Returns
+        -------
+        DataFrame
+            Returns DataFrame with rows of each state, with aggregated colums for each state.
+
         '''
         return self.aggregated_data.iloc[5:]
         
     
     def state_cities(self, which_state):
-        '''This method returns a specific stated, with all of its cities / counties
         '''
-        #which_state = input('Which State? ')
+        which_state : String
+            User must input specific state to generate DataFrame.
+
+        Returns
+        -------
+        DataFrame with Rows of cities for Specific State.
+
+        '''
+        
         if which_state in self.states_:
             state = self.data.loc[self.data['STNAME'] == which_state]
             return state
@@ -52,6 +91,16 @@ class Basic_clean:
             return "Invalid input, please try again"
 
     def city(self, which_state, which_city):
+        '''
+        which_state : String
+            User must input specific state to generate DataFrame.
+        which_city : String
+            User must input specific City to generate DataFrame.
+        Returns
+        -------
+        DataFrame with specific state user requested
+
+        '''
         state = self.state_cities(which_state)
         #which_city = input('Which City or County? ')
         city = state.loc[state['CTYNAME'] == which_city]
