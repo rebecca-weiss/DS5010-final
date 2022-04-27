@@ -7,6 +7,7 @@ import pandas as pd
 from round_slicingV2 import Basic_clean
 from sum_statisticV2 import Sum_statistics
 from combined_statisticsV2 import Combined_statistics
+from census_bargraphs_piecharts import Vis_Census
 
 
 def main() :
@@ -37,5 +38,24 @@ def main() :
     print(cs.combined_summary(['Choctaw County', 'Cleburne County','Cullman County'], 'CTYNAME', 'BIRTHS2020'))
     print(cs.comparison('Choctaw County', 'Cleburne County', 'CTYNAME', 'ESTIMATESBASE2020'))
 
+    # We test the visualizations with Aggregated States 
+    data = Vis_Census(aggregated_states)
+    data.compare_bar_graph('NAME', 'ESTIMATESBASE2020','POPESTIMATE2021')
+    data.bar_graph('NAME', 'ESTIMATESBASE2020')
+    data.pie_chart('NAME', 'ESTIMATESBASE2020')
+
+    # We test the visualizations with Aggregated Regions
+    data = Vis_Census(aggregated_regions)
+    data.compare_bar_graph('NAME', 'ESTIMATESBASE2020','POPESTIMATE2021')
+    data.bar_graph('NAME', 'ESTIMATESBASE2020')
+    data.pie_chart('NAME', 'ESTIMATESBASE2020')
+    
+    # We test the visualizations with A specific States and its cities
+    states = bc.state_cities("Delaware")
+    data = Vis_Census(states)
+    data.bar_graph('CTYNAME', 'ESTIMATESBASE2020')
+    data.bar_graph('CTYNAME', 'ESTIMATESBASE2020')
+    data.pie_chart('CTYNAME', 'ESTIMATESBASE2020')
+    
 if __name__ == "__main__":
     main()
