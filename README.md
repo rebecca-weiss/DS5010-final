@@ -1,4 +1,4 @@
-# US_Census_Analyzer
+# US_Census_Visualizer
 
 Authors:
 Rebecca Weiss, Jacob Dengler, Matthew Quaglia, Ruben Lema, Sanjay Kanakaraj
