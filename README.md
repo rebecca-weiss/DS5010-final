@@ -27,7 +27,9 @@ Overall, the various functions and class are available to visually display the d
 
 ## Examples of Use
 
-
+Finding the average estimated population of the United States of America for 2020. 
+Showing a HeatMap of the birthrate of the United States of America in 2020.
+Comparing the average Birthrate between the North and South both numerically and through a comparison bargraph 
 
 ## 1. Install dependencies 
 pip install -r requirements.txt
