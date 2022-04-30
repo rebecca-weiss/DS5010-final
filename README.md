@@ -1,5 +1,10 @@
 # US_Census_Visualizer
-## Authors: Rebecca Weiss, Jacob Dengler, Matthew Quaglia, Ruben Lema, Sanjay Kanakaraj
+## Authors: 
+ - Rebecca Weiss
+ - Jacob Dengler
+ - Matthew Quaglia
+ - Ruben Lema
+ - Sanjay Kanakaraj
 
 ![US Population 2021](https://github.com/rebecca-weiss/DS5010-final/blob/main/output/2021population_map.png)
 
